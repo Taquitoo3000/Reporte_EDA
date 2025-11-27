@@ -51,6 +51,7 @@ erDiagram
 ```
 
 ## Preprocesamiento de Datos
+### Dataframe Principal `df`
 Una vez se cargaron las tablas `Quejas`, `Expediente`, `Recomendaciones` y `NoRecomendaciones`. Se realiza un INNER MERGE entre `Quejas` y `Expediente` utilizando como columna `Quejas.Expediente` y `Expediente.Expediente`.
 ```python
 df = pd.merge(
@@ -65,3 +66,6 @@ df = df.sort_values(['FechaInicio', 'Expediente'])
 df = df.reset_index(drop=True)
 ```
 Se filtran los expedientes del 2025, se ordenan por la fecha de inicio y su número de expediente y finalmente se hace un reset al indice del dataframe. Siendo este nuestro dataframe principal que contiene relacion uno a varios entre las columnas.
+
+### Dataframe Secundario `df2`
+Este dataframe es generado a partir del dataframe principal
