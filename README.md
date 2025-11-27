@@ -85,7 +85,7 @@ conteo = conteo[
 ```
 En los cuales se descartan del conteo los registros que en la columna `Municipio` tienen la palabra _Estatal_, _Federal_, _Autoridad_, _Indet_, _null_ o que simplemente son nulos.
 Finalmente se realiza el conteo, se muestran los primeros, o todos según la necesidad del usuario. Y se ordenan en orden descendente:
-```
+```python
 conteo = conteo['DireccionMunicipal'].value_counts().head(9)
 conteo = conteo.sort_values(ascending=False)
 ```
