@@ -36,6 +36,7 @@ erDiagram
     EXPEDIENTES ||--o{ QUEJAS : contiene
     EXPEDIENTES ||--o{ RECOMENDACIONES : genera
     QUEJAS ||--|| RECOMENDACIONES : genera
+    QUEJAS ||--|| NORECOMENDACIONES : genera
     EXPEDIENTES ||--o{ NORECOMENDACIONES : genera
     
     EXPEDIENTES {
