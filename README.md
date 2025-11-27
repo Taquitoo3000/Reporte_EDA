@@ -35,7 +35,7 @@ Se filtran los expedientes del 2025, se ordenan por la fecha de inicio y su núm
 erDiagram
     EXPEDIENTES ||--o{ QUEJAS : contiene
     EXPEDIENTES ||--o{ RECOMENDACIONES : genera
-    QUEJAS ||--o{ RECOMENDACIONES : genera
+    QUEJAS ||--|| RECOMENDACIONES : genera
     EXPEDIENTES ||--o{ NORECOMENDACIONES : genera
     
     EXPEDIENTES {
