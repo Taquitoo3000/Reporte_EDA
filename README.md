@@ -31,7 +31,7 @@ df = df.sort_values(['FechaInicio', 'Expediente'])
 df = df.reset_index(drop=True)
 ```
 Se filtran los expedientes del 2025, se ordenan por la fecha de inicio y su número de expediente y finalmente se hace un reset al indice del dataframe. Siendo este nuestro dataframe principal que contiene relacion uno a varios entre las columnas.
-
+```mermaid
 erDiagram
     EXPEDIENTES ||--o{ QUEJAS : contiene
     EXPEDIENTES ||--o{ RECOMENDACIONES : genera
@@ -63,3 +63,4 @@ erDiagram
         string Expediente FK
         string Motivo
     }
+```
