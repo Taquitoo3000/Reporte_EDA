@@ -68,4 +68,25 @@ df = df.reset_index(drop=True)
 Se filtran los expedientes del 2025, se ordenan por la fecha de inicio y su número de expediente y finalmente se hace un reset al indice del dataframe. Siendo este nuestro dataframe principal que contiene relacion uno a varios entre las columnas.
 
 ### Dataframe Secundario `df2`
-Este dataframe es generado a partir del dataframe principal
+Este dataframe es generado a partir del dataframe principal, a excepción de que se eliminan los registros duplicados debido a las relaciones (1-N). Por lo que nos servirá para hacer conteos de expedientes unicos. Se genera utilizando el comando `.drop_duplicates()`.
+
+## Resultados
+Utilizando el comando `.drop_duplicates()` filtramos las columnas que requerimos para realizar conteos sobre algun parametro. Hacemos algunos filtros como lo son los filtros de municipios:
+```python
+conteo = df[['Expediente', 'DireccionMunicipal', 'Municipio']].drop_duplicates()
+conteo = conteo[
+    (conteo['Municipio'] != 'Estatal') & 
+    (conteo['Municipio'] != 'Federal') & 
+    ~conteo['Municipio'].str.startswith('autoridad', na=False) &
+    ~conteo['Municipio'].str.startswith('Indet', na=False) &
+    ~conteo['Municipio'].str.startswith('null', na=False) &
+    conteo['Municipio'].notna()
+]
+```
+En los cuales se descartan del conteo los registros que en la columna `Municipio` tienen la palabra _Estatal_, _Federal_, _Autoridad_, _Indet_, _null_ o que simplemente son nulos.
+Finalmente se realiza el conteo, se muestran los primeros, o todos según la necesidad del usuario. Y se ordenan en orden descendente:
+```
+conteo = conteo['DireccionMunicipal'].value_counts().head(9)
+conteo = conteo.sort_values(ascending=False)
+```
+Se realiza lo mismo pero variando los parámetros segun las necesidades y en algunas ocasiones se realizan gráficas de barras para visualizar los valores o gráficas de pasteles.
