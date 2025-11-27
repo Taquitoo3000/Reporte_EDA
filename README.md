@@ -35,32 +35,30 @@ Se filtran los expedientes del 2025, se ordenan por la fecha de inicio y su núm
 erDiagram
     EXPEDIENTES ||--o{ QUEJAS : contiene
     EXPEDIENTES ||--o{ RECOMENDACIONES : genera
+    QUEJAS ||--o{ RECOMENDACIONES : genera
     EXPEDIENTES ||--o{ NORECOMENDACIONES : genera
     
     EXPEDIENTES {
         string Expediente PK
-        date FechaCreacion
-        string Estatus
+        date FechaConclusion
+        string Conclusion
     }
-    
     QUEJAS {
         int Id PK
         string Expediente FK
         string Hecho
         string DireccionMunicipal
-        string AutoridadSeñalada
     }
-    
     RECOMENDACIONES {
         int Id PK
         string Expediente FK
         string DireccionMunicipal
         string Recomendacion
+        string Hecho
     }
-    
     NORECOMENDACIONES {
         int Id PK
         string Expediente FK
-        string Motivo
+        string Autoridad
     }
 ```
